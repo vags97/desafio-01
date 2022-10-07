@@ -3,7 +3,7 @@ first challenge for copernicus HR
 
 El desafío corresponde a la creación de una aplicación web utilizando Node y React para un usuario que quiere obtener informacion de manera sistematica a eventos que realiza periodicamente, el cuenta con un archivo csv de las y los asistentes, pero quiere un programa web que le entregue alguna informacion procesada de estos eventos sin que el tenga que abrir dicho archivo. para esto se propone la siguiente arquitectura.
 
-A nivel de front, utilizando react, se debe confeccionar un sitio que conste de tres páginas, una en donde se de la bienvenida al usuario y se proporcione un contexto de la utilidad de la aplicación, en otra página se debe desplegar lo necesario para que el usuario suba un archivo csv y luego muestre algún insight de los datos que ha subido. Y una tercera pagina donde se muestren creditos a quienes crearon esta aplicacion. Como referencia grafica se muestran las siguientes imagenes (con fines meramente ilustrativos)
+A nivel de front, utilizando react, se debe confeccionar un sitio que conste de tres páginas, una en donde se de la bienvenida al usuario y se proporcione un contexto de la utilidad de la aplicación, en otra página se debe desplegar lo necesario para que el usuario suba un archivo csv (Data/registro.csv) y luego muestre algún insight de los datos que ha subido. Y una tercera pagina donde se muestren creditos a quienes crearon esta aplicacion. Como referencia grafica se muestran las siguientes imagenes (con fines meramente ilustrativos)
 
 Bienvenida:
 ![Bienvenida](Imagenes/bienvenida-ejemplo.png?raw=true "Bienvenida")
