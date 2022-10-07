@@ -2,7 +2,9 @@
 first challenge for copernicus HR
 
 Flujo de servicios para el desafio:
-![Flujo de servicios](/sedafio-01/Imagenes/diagrama-flujo-servicios.png?raw=true "Flujo de servicios")
+![Flujo de servicios](Imagenes/diagrama-flujo-servicios.png?raw=true "Flujo de servicios")
+
+<img src="Imagenes/diagrama-flujo-servicios.png" title="Flujo de servicios">
 
 
 El desafío corresponde a la creación de una aplicación web utilizando Node y React.
