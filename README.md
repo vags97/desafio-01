@@ -34,3 +34,21 @@ El plazo y formato de entrega de este desafio es 7 dias desde la entrega de la r
 PARTE II
 
 Desarrollar un diagrama y un documento explicando un sistema de imlementacion del aplicativo desarrollado en la parte I, considerando escalabilidad, seguridad, confiabilidad y monitoreo, de preferencia utilizar herramientas basadas en Docker y Kubernetes. Finalmente indicar posibles vulnerabilidades al sistema desarrollando posibles soluciones para disminuir estos riesgos.
+
+## Requerimientos
+- Node 16
+
+## Instalación
+### Backend (api)
+- Ejecutar `npm install`
+- DB:
+  - Crear Tablas (migrations) `npx squelize-cli db:migrate`
+  - Sembrar Tablas (seeders) `npx squelize-cli db:seed:all`
+### Frontend (app)
+- Ejecutar `npm install`
+
+## Ejecución Desarrollo
+### Backend (api)
+- Ejecutar `npm run start:dev`
+### Frontend (app)
+- Ejecutar `npm run start`
