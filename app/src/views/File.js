@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import api from './../setup/api'
 
@@ -26,13 +26,11 @@ export default function File () {
         'Content-Type': 'multipart/form-data'
       }
     })
-      .then((data) => {
+      .then(({ data }) => {
+        const { id } = data
         setFile()
         refFileInput.current.value = ''
-        api.get('/file')
-          .then(({ data }) => {
-            setEvents(data.events)
-          })
+        navigate(`/event/${id}`, { replace: true })
       })
       .catch((err) => console.error(err))
   }
@@ -78,15 +76,22 @@ export default function File () {
       </thead>
       <tbody>
         { events.map((event) => {
+          const createdAt = new Date(event.createdAt)
+          const createdAtString = `${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`
           return <tr key={event.id}>
             <td className="p-2 border-b text-left">
               {event.fileName}
             </td>
             <td className="p-2 border-b text-left">
-              {event.createdAt}
+              {createdAtString}
             </td>
             <td className="p-2 border-b text-left">
-              ver info
+              <Link
+                to={`/event/${event.id}`}
+                className="-mx-3 block rounded-lg py-2.5  text-blue-600 px-3 text-base font-semibold leading-7 hover:bg-gray-50"
+              >
+                Ver Información
+              </Link>
             </td>
           </tr>
         }) }

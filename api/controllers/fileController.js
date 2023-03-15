@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
 const { Events } = require('../models')
+const { parse } = require('csv-parse')
 
 async function generateFileAnalysis (req, res, next) {
   const file = req.file
@@ -17,9 +18,11 @@ async function generateFileAnalysis (req, res, next) {
         err
       })
     } else {
-      await Events.create({ path: filePath })
+      const event = await Events.create({ path: filePath })
+      console.log(event)
       res.status(200).json({
-        msg: 'Archivo cargado correctamente'
+        msg: 'Archivo cargado correctamente',
+        id: event.id
       })
     }
   })
@@ -45,4 +48,54 @@ async function getEvents (req, res) {
   })
 }
 
-module.exports = { generateFileAnalysis, getEvents }
+async function getEventInfo (req, res) {
+  const id = req.params.id
+  const eventDb = await Events.findOne({
+    attributes: [
+      'path',
+      'createdAt'
+    ],
+    where: { id }
+  })
+  let rowIndex = 0
+  let countryRowIndex = null
+  const countries = []
+  fs.createReadStream(eventDb.path)
+    .pipe(parse({ delimiter: ',', from_line: 1 }))
+    .on('data', (row) => {
+      if (rowIndex === 0) {
+        countryRowIndex = row.findIndex((col) => col === 'pais')
+      } else {
+        const rowCountry = row[countryRowIndex]
+        const country = countries.find((countryData) => countryData.country === rowCountry)
+        if (country) {
+          country.assistants += 1
+        } else {
+          countries.push({
+            country: rowCountry,
+            assistants: 1
+          })
+        }
+      }
+      rowIndex++
+    })
+    .on('end', function () {
+      const event = {
+        fileName: path.basename(eventDb.path),
+        createdAt: eventDb.createdAt,
+        assistantsPerCountry: countries.sort((a, b) => b.assistants - a.assistants)
+      }
+      return res.status(200).json({
+        msg: 'Evento obtenido correctamente',
+        event
+      })
+    }).on('error', function (err) {
+      console.log(err)
+      res.status(500).json({
+        msg: 'Error del servidor',
+        err
+      })
+    })
+}
+
+module.exports = { generateFileAnalysis, getEvents, getEventInfo }
