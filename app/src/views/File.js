@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import api from './../setup/api'
@@ -7,6 +7,7 @@ import api from './../setup/api'
 export default function File () {
   const [file, setFile] = useState()
   const [events, setEvents] = useState([])
+  const refFileInput = useRef()
 
   function handleFileChange (e) {
     if (e.target.files) {
@@ -25,7 +26,14 @@ export default function File () {
         'Content-Type': 'multipart/form-data'
       }
     })
-      .then((data) => console.log(data))
+      .then((data) => {
+        setFile()
+        refFileInput.current.value = ''
+        api.get('/file')
+          .then(({ data }) => {
+            setEvents(data.events)
+          })
+      })
       .catch((err) => console.error(err))
   }
   const navigate = useNavigate()
@@ -47,13 +55,13 @@ export default function File () {
     </p>
     <form className="space-y-6 pt-6" onSubmit={handleSubmit}>
       <p>Asegúrese de que el archivo contenga una columna llamada &quot;país&quot;</p>
-      <input type="file" onChange={handleFileChange} />
+      <input type="file" onChange={handleFileChange} ref={refFileInput}/>
 
       <div>{file && `${file.name} - ${file.type}`}</div>
 
       <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Subir Documento</button>
     </form>
-    <h2 className="text-3xl font-bold">Credits</h2>
+    <h2 className="text-3xl font-bold pt-5">Eventos</h2>
     <table className="table-auto">
       <thead>
         <tr>
@@ -70,7 +78,7 @@ export default function File () {
       </thead>
       <tbody>
         { events.map((event) => {
-          return <tr key="{developer.id}">
+          return <tr key={event.id}>
             <td className="p-2 border-b text-left">
               {event.fileName}
             </td>

@@ -41,7 +41,7 @@ export default function Credits () {
       </thead>
       <tbody>
         { developers.map((developer) => {
-          return <tr key="{developer.id}">
+          return <tr key={developer.id}>
             <td className="p-2 border-b text-left">
               {developer.firstName}
             </td>
