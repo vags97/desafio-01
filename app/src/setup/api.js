@@ -1,18 +1,18 @@
 import axios from 'axios'
 
-var api = axios.create({
+const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
   headers: {
     'Cache-Control': 'no-cache',
-    'Pragma': 'no-cache',
-    'Expires': '0',
+    Pragma: 'no-cache',
+    Expires: '0',
     'Accept-Language': 'es'
   }
 })
 
-api.interceptors.request.use(function(config) {
-    // TODO: Implementar token sesion
-    /*
+api.interceptors.request.use(function (config) {
+  // TODO: Implementar token sesion
+  /*
   const accessToken = sessionStore.accessToken
   if(accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`
@@ -20,29 +20,28 @@ api.interceptors.request.use(function(config) {
     return config
   } else {
     return config
-  }*/
+  } */
   return config
-}, function(error) {
+}, function (error) {
   return Promise.reject(error)
 })
 
 api.interceptors.response.use((response) => {
   return response
 }, (error) => {
-  if(error.response){
-    if(!Object.prototype.hasOwnProperty.call(error.response.data, 'msg')){
+  if (error.response) {
+    if (!Object.prototype.hasOwnProperty.call(error.response.data, 'msg')) {
       error.response.data.msg = 'Error en el servidor no identificado'
     }
-    if(!Object.prototype.hasOwnProperty.call(error.response.data, 'errors')){
+    if (!Object.prototype.hasOwnProperty.call(error.response.data, 'errors')) {
       error.response.data.errors = [['Error en el servidor no identificado']]
     }
-    if(error.response.status === 401){
-        // TODO: implementar cierre de sesion
-      /*const sessionStore = useSessionStore()
-      sessionStore.destroy()*/
+    if (error.response.status === 401) {
+      // TODO: implementar cierre de sesion
+      /* const sessionStore = useSessionStore()
+      sessionStore.destroy() */
     }
-  }
-  else if (error.request){
+  } else if (error.request) {
     error.msg = 'Sin respuesta del servidor'
     error.errors = [['Sin respuesta del servidor']]
   } else {

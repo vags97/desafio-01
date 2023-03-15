@@ -1,9 +1,6 @@
-const express = require('express')
 const { Developer } = require('../models')
-const router = express.Router()
 
-/* GET users listing. */
-router.get('/', async function (req, res, next) {
+async function getCredits (req, res, next) {
   const developers = await Developer.findAll({
     attributes: [
       'id',
@@ -17,6 +14,6 @@ router.get('/', async function (req, res, next) {
     order: [['lastName', 'ASC']]
   })
   res.status(200).json(developers)
-})
+}
 
-module.exports = router
+module.exports = { getCredits }

@@ -1,9 +1,7 @@
-const express = require('express')
-const router = express.Router()
+const { getCredits } = require('../controllers/creditsController')
+const { getHomeInfo } = require('../controllers/homeController')
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource')
-})
-
-module.exports = router
+module.exports = function (app) {
+  app.get('/', getHomeInfo)
+  app.get('/credits', getCredits)
+}
