@@ -1,5 +1,5 @@
 import api from './../setup/api'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Credits () {
   const [developers, setDevelopers] = useState([])
@@ -14,27 +14,27 @@ export default function Credits () {
     }
     fetchData()
   }, [])
-  return <div>
-    <h2>Credits</h2>
-    <table>
+  return <div className='grid place-items-center'>
+    <h2 className="text-3xl font-bold">Credits</h2>
+    <table className="table-auto">
       <thead>
         <tr>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Nombre
           </th>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Apellido
           </th>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Email
           </th>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Telefono
           </th>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Linkedin
           </th>
-          <th>
+          <th className="font-bold p-2 border-b text-left">
             Github
           </th>
         </tr>
@@ -42,22 +42,22 @@ export default function Credits () {
       <tbody>
         { developers.map((developer) => {
           return <tr key="{developer.id}">
-            <td>
+            <td className="p-2 border-b text-left">
               {developer.firstName}
             </td>
-            <td>
+            <td className="p-2 border-b text-left">
               {developer.lastName}
             </td>
-            <td>
+            <td className="p-2 border-b text-left">
               {developer.email}
             </td>
-            <td>
+            <td className="p-2 border-b text-left">
               {developer.phone}
             </td>
-            <td>
+            <td className="p-2 border-b text-left text-blue-600 dark:text-blue-500 hover:underline">
               <a href={developer.linkedin} target="_blank" rel="noreferrer">Linkedin</a>
             </td>
-            <td>
+            <td className="p-2 border-b text-left text-blue-600 dark:text-blue-500 hover:underline">
               <a href={developer.github} target="_blank" rel="noreferrer">Github</a>
             </td>
           </tr>

@@ -2,8 +2,8 @@
 const {
   Model
 } = require('sequelize')
-
 const bcrypt = require('bcryptjs')
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -13,6 +13,39 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
+    }
+
+    static async getUserDataWithEmail (email) {
+      return await User.findOne({
+        attributes: [
+          'id',
+          'passwordHash',
+          'email',
+          'firstName',
+          'lastName'
+        ],
+        where: {
+          email
+        }
+      })
+    }
+
+    async validPassword (password) {
+      return await bcrypt.compare(password, this.passwordHash)
+    }
+
+    getSessionUserData () {
+      return (({
+        id,
+        firstName,
+        lastName,
+        email
+      }) => ({
+        id,
+        firstName,
+        lastName,
+        email
+      }))(this)
     }
   }
   User.init({

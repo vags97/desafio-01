@@ -10,22 +10,6 @@ const api = axios.create({
   }
 })
 
-api.interceptors.request.use(function (config) {
-  // TODO: Implementar token sesion
-  /*
-  const accessToken = sessionStore.accessToken
-  if(accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`
-    //console.log(config);
-    return config
-  } else {
-    return config
-  } */
-  return config
-}, function (error) {
-  return Promise.reject(error)
-})
-
 api.interceptors.response.use((response) => {
   return response
 }, (error) => {

@@ -17,14 +17,15 @@ export default function Home () {
     fetchData()
   }, [])
   const steps = DOMPurify.sanitize(messages.steps)
-  return <div>
-    <h1 className="text-3xl font-bold underline">
+  return <div className='grid place-items-center'>
+    <h2 className="text-3xl font-bold py-2">Home</h2>
+    <h1 className="text-3xl font-bold underline py-2">
       {messages.welcome}
     </h1>
-    <h3>
+    <h3 className='py-2'>
       {messages.stack}
     </h3>
-    <h3>
+    <h3 className='py-2'>
       {messages.details}
     </h3>
     <h3>{parse(steps)}</h3>

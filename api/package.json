@@ -8,13 +8,18 @@
     "lint": "eslint . --ext .js"
   },
   "dependencies": {
+    "@fullerstack/nax-ipware": "^0.10.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "fast-geoip": "^1.1.88",
+    "joi": "^17.8.4",
+    "jsonwebtoken": "^9.0.0",
     "morgan": "~1.9.1",
     "sequelize": "^6.29.3",
+    "spatialite": "^0.1.0",
     "sqlite3": "^5.1.4"
   },
   "devDependencies": {

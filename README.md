@@ -40,10 +40,11 @@ Desarrollar un diagrama y un documento explicando un sistema de imlementacion de
 
 ## Instalación
 ### Backend (api)
+- Ejecutar `npm install -g sequelize-cli`
 - Ejecutar `npm install`
 - DB:
-  - Crear Tablas (migrations) `npx squelize-cli db:migrate`
-  - Sembrar Tablas (seeders) `npx squelize-cli db:seed:all`
+  - Crear Tablas (migrations) `npx sequelize-cli db:migrate`
+  - Sembrar Tablas (seeders) `npx sequelize-cli db:seed:all`
 ### Frontend (app)
 - Ejecutar `npm install`
 
