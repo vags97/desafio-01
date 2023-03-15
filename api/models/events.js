@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Events.init({
-    path: DataTypes.STRING
+    path: DataTypes.STRING,
+    createdAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Events'

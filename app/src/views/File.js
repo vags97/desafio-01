@@ -6,6 +6,7 @@ import api from './../setup/api'
 
 export default function File () {
   const [file, setFile] = useState()
+  const [events, setEvents] = useState([])
 
   function handleFileChange (e) {
     if (e.target.files) {
@@ -32,6 +33,11 @@ export default function File () {
   useEffect(() => {
     if (!refreshToken) {
       navigate('/login-required', { replace: true })
+    } else {
+      api.get('/file')
+        .then(({ data }) => {
+          setEvents(data.events)
+        })
     }
   }, [])
   return <div className='grid place-items-center'>
@@ -47,5 +53,36 @@ export default function File () {
 
       <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Subir Documento</button>
     </form>
+    <h2 className="text-3xl font-bold">Credits</h2>
+    <table className="table-auto">
+      <thead>
+        <tr>
+          <th className="font-bold p-2 border-b text-left">
+            Nombre Archivo
+          </th>
+          <th className="font-bold p-2 border-b text-left">
+            Fecha de Creación
+          </th>
+          <th className="font-bold p-2 border-b text-left">
+            Ver información
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        { events.map((event) => {
+          return <tr key="{developer.id}">
+            <td className="p-2 border-b text-left">
+              {event.fileName}
+            </td>
+            <td className="p-2 border-b text-left">
+              {event.createdAt}
+            </td>
+            <td className="p-2 border-b text-left">
+              ver info
+            </td>
+          </tr>
+        }) }
+      </tbody>
+    </table>
   </div>
 }
