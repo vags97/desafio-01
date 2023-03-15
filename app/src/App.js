@@ -11,9 +11,9 @@ import store from './store'
 import { Provider, useSelector } from 'react-redux'
 
 const nav = [
-  { name: 'Home', href: '/' },
-  { name: 'File', href: '/file' },
-  { name: 'Credits', href: '/credits' }
+  { name: 'Inicio', href: '/' },
+  { name: 'Archivo', href: '/file' },
+  { name: 'Créditos', href: '/credits' }
 ]
 
 function App () {

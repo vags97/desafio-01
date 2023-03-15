@@ -52,7 +52,7 @@ export default function File () {
       Suba el archivo csv y obtenga la cantidad de registrados según país ordenados de mayor a menor.
     </p>
     <form className="space-y-6 pt-6" onSubmit={handleSubmit}>
-      <p>Asegúrese de que el archivo contenga una columna llamada &quot;país&quot;</p>
+      <p>Asegúrese de que el archivo contenga una columna llamada &quot;pais&quot;</p>
       <input type="file" onChange={handleFileChange} ref={refFileInput}/>
 
       <div>{file && `${file.name} - ${file.type}`}</div>
