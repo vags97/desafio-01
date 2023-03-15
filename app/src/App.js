@@ -41,7 +41,7 @@ function App () {
               {nav.map((item) => (
                 <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
                   {item.name}
@@ -77,13 +77,13 @@ function App () {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
                     {nav.map((item) => (
-                      <a
+                      <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.href}
                       className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                   <div className="py-6">
@@ -100,7 +100,9 @@ function App () {
           </Dialog>
         </header>
         <div className="relative isolate px-6 pt-16 lg:px-8">
-          <Router/>
+          <div className="pt-2">
+            <Router/>
+          </div>
         </div>
 
       </div>
