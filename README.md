@@ -89,4 +89,6 @@ Desarrollar un diagrama y un documento explicando un sistema de imlementacion de
 - Almacenamiento de contraseñas sql en bcrypt
 - Desarrollo sin contraseñas reales y desarrolladores sin acceso a estas
 - Sistemas de Almacenamiento de Contraseñas seguros como Bitwarden
+- Software de revisión de codigo automático en busqueda de problemas de seguridad (SonarQube)
+- Seguir recomendaciones de la [Guía de desarrollo de software | Gobierno Digital](https://digital.gob.cl/transformacion-digital/estandares-y-guias/guia-desarrollo-software/)
   
