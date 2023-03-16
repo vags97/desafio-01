@@ -64,3 +64,4 @@ typings/
 
 storage/*
 tmp/*
+__snapshots__

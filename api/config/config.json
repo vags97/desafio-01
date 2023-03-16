@@ -11,13 +11,13 @@
     "password": null,
     "database": "main",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "sqlite"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "main",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "sqlite"
   }
 }
