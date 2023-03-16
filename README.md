@@ -53,3 +53,14 @@ Desarrollar un diagrama y un documento explicando un sistema de imlementacion de
 - Ejecutar `npm run start:dev`
 ### Frontend (app)
 - Ejecutar `npm run start`
+  
+## Tests
+### Backend (api)
+- Ejecutar `npm run test`
+
+## TODO
+- Mejorar Test Unitarios con casos limites
+- Sesión:
+  - Implemetar solicitud de nuevo accessToken una vez expirado
+  - Implementar api para destruir sesión
+  - Mantener sesión iniciada almacenando información el localstorage (se pierde sesión al recargar la página)
