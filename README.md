@@ -80,7 +80,7 @@ Desarrollar un diagrama y un documento explicando un sistema de imlementacion de
   - Cache: Para almacenar cache de las consultas en nodejs y mejorar rendimiento
   - WebServer: Balanceo de carga y servicio que entrega los contenedores publicos a la web
 
-## Seguirdad
+## Seguridad
 - Sistemas de Monitoreo como Grafana
 - Bloqueador de ips automatico (Fail2Ban)
 - Firewall
