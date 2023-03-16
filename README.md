@@ -64,3 +64,29 @@ Desarrollar un diagrama y un documento explicando un sistema de imlementacion de
   - Implemetar solicitud de nuevo accessToken una vez expirado
   - Implementar api para destruir sesión
   - Mantener sesión iniciada almacenando información el localstorage (se pierde sesión al recargar la página)
+
+
+# Parte II
+<img src="Imagenes/infraestructura.png?raw=true.jpg" width=40%>
+
+## Infraestructura
+- Terraform: Administrar capa fisica mediante software, utilizando los servidores disponibles
+- Sistema de Orquestamiento de Contenedores: Crear y destruir contenedores a conveniencia y distribuir carga o recrear en caso de multiples errores
+- Dockers: Imagenes docker con los repositorios para inicializar de forma automatizada los servicios
+  - Backend: Api stateless en nodejs
+  - Frontend: Vistas en reactjs
+  - Sql: Base de datos en PostgreSQL
+  - Almacenamiento S3: Sistema de almacenamiento escalabe y estandar, con posibilidad de migrar a Amazon S3
+  - Cache: Para almacenar cache de las consultas en nodejs y mejorar rendimiento
+  - WebServer: Balanceo de carga y servicio que entrega los contenedores publicos a la web
+
+## Seguirdad
+- Sistemas de Monitoreo como Grafana
+- Bloqueador de ips automatico (Fail2Ban)
+- Firewall
+- En caso de implementar AWS, amazon guardDuty
+- Ataques DDos (dns cloudflare)
+- Almacenamiento de contraseñas sql en bcrypt
+- Desarrollo sin contraseñas reales y desarrolladores sin acceso a estas
+- Sistemas de Almacenamiento de Contraseñas seguros como Bitwarden
+  
